@@ -5,7 +5,9 @@
     <body>
         <p>Hi {to_name}.</p>
         
-        <p>Your IP address has changed from {from_ip} to {to_ip}.</p>
+        <p>The following firewall(s) have been updated:</p>
+
+        <p>{inbound_rule_changes}</p>
     
         <p>You will need to update the <a href="{proxy_url}">Nginx Proxy Manager</a> allowlist.</p>
 

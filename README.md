@@ -35,7 +35,7 @@ The Linode firewall uses an allowlist to prevent unwanted traffic on my server. 
       --name linode_firewall_autoupdater \
       -e TZ="America/Los_Angeles" \
       -e LINODE_TOKEN="8f5cd6729h0v5d247vc190ddcs4l2b"
-      -e LINODE_FIREWALL_ID="12345"
+      -e LINODE_FIREWALL_IDS="12345"
       -e LINODE_LABEL_NAME="home"
       -e FROM_EMAIL="from@example.com" \
       -e TO_EMAIL="to@example.com" \
@@ -53,7 +53,7 @@ The Linode firewall uses an allowlist to prevent unwanted traffic on my server. 
 
     - ```
       version: "3.5"
-      
+
       services:
         linode_firewall_autoupdater:
           container_name: linode_firewall_autoupdater
@@ -63,7 +63,7 @@ The Linode firewall uses an allowlist to prevent unwanted traffic on my server. 
           environment:
             TZ: America/Los_Angeles
             LINODE_TOKEN: "${LINODE_TOKEN}"
-            LINODE_FIREWALL_ID: "${LINODE_FIREWALL_ID}"
+            LINODE_FIREWALL_IDS: "${LINODE_FIREWALL_IDS}"
             LINODE_LABEL_NAME: "${LINODE_LABEL_NAME}"
             FROM_EMAIL: "${FROM_EMAIL}"
             TO_EMAIL: "${TO_EMAIL}"
@@ -87,16 +87,19 @@ The script reads in email templates everytime it is ran. You can customize the t
 
 ## Environment Variables
 
-| Variable      | Required | Default                     | Example                        | Needed by                     |
-| ------------- | -------- | --------------------------- | ------------------------------ | ----------------------------- |
-| FROM_NAME     | false    | Linode Firewall Autoupdater | Linode Firewall Autoupdater    | SMTP Server (send email from) |
-| FROM_EMAIL    | true     | ---                         | from@example.com               | SMTP Server (send email from) |
-| TO_NAME       | false    |                             | Laura                          | SMTP Server (send email to)   |
-| TO_EMAIL      | true     | ---                         | to@example.com                 | SMTP Server (send email to)   |
-| PROXY_URL     | true     | ---                         | nginx.example.com              | Template                      |
-| SMTP_HOST     | true     | ---                         | smtp.example.com               | SMTP Server                   |
-| SMTP_PORT     | false    | 465                         | 465                            | SMTP Server                   |
-| SMTP_USER     | true     | ---                         | laura@example.com              | SMTP Server                   |
-| SMTP_PASSWORD | true     | ---                         | 8f5cd6729h0v5d247vc190ddcs4l2a | SMTP Server                   |
+| Variable            | Required | Default                     | Example                        | Needed by                     |
+| ------------------- | -------- | --------------------------- | ------------------------------ | ----------------------------- |
+| FROM_NAME           | false    | Linode Firewall Autoupdater | Linode Firewall Autoupdater    | SMTP Server (send email from) |
+| FROM_EMAIL          | true     | ---                         | from@example.com               | SMTP Server (send email from) |
+| TO_NAME             | false    |                             | Laura                          | SMTP Server (send email to)   |
+| TO_EMAIL            | true     | ---                         | to@example.com                 | SMTP Server (send email to)   |
+| PROXY_URL           | true     | ---                         | nginx.example.com              | Template                      |
+| LINODE_TOKEN        | true     | ---                         | 8f5cd6729h0v5d247vc190ddcs4l2a | Linode API                    |
+| LINODE_FIREWALL_IDS | true     | ---                         | 123,456                        | Linode API                    |
+| LINODE_LABEL_NAME   | true     | ---                         | home                           | Linode API                    |
+| SMTP_HOST           | true     | ---                         | smtp.example.com               | SMTP Server                   |
+| SMTP_PORT           | false    | 465                         | 465                            | SMTP Server                   |
+| SMTP_USER           | true     | ---                         | laura@example.com              | SMTP Server                   |
+| SMTP_PASSWORD       | true     | ---                         | 8f5cd6729h0v5d247vc190ddcs4l2a | SMTP Server                   |
 
 **NOTE:** For security purposes, it is strong recommended that you use a generated API passwords.

@@ -15,7 +15,7 @@ services:
     environment:
       TZ: America/Los_Angeles
       LINODE_TOKEN: "${LINODE_TOKEN}"
-      LINODE_FIREWALL_ID: "${LINODE_FIREWALL_ID}"
+      LINODE_FIREWALL_IDS: "${LINODE_FIREWALL_IDS}"
       LINODE_LABEL_NAME: "${LINODE_LABEL_NAME}"
       FROM_EMAIL: "${FROM_EMAIL}"
       TO_NAME: "${TO_NAME}"
